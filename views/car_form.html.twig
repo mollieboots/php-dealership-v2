@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        <title>Find a Car</title>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Find a Car!</h1>
+            <form class="" action="car.php">
+                <div class="form-group">
+                    <label for="price">Enter Maximum Price:</label>
+                    <input type="number" name="price" value="price">
+                </div>
+                <div class="form-group">
+                    <label for="mileage">Enter Maximum Mileage:</label>
+                    <input type="number" name="mileage" value="mileage">
+                </div>
+                <button type="submit" class="btn-success">Submit</button>
+            </form>
+
+        </div>
+    </body>
+</html>
+
+
+<?php
+    if(empty($cars_matching_search)) {
+        echo "<h2> Sorry, no cars matched your search. </h2>";
+    } else {
+        foreach ($cars_matching_search as $car) {
+            $car_make = $car->getMake_Model();
+            $car_price = $car->getPrice();
+            $car_miles = $car->getMiles();
+            $car_image = $car->getImage();
+            echo "<li> $car_make </li>";
+            echo "<ul>";
+                echo "<li> $car_price </li>";
+                echo "<li> Miles: $car_miles </li>";
+                echo "<li> <img src='$car_image'> </li>";
+            echo "</ul>";
+        }
+    }
+?>
