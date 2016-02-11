@@ -2,29 +2,27 @@
 <html>
     <head>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-        <title>Find a Car</title>
+        <title>Car Results</title>
     </head>
     <body>
         <div class="container">
-            <h1>Find a Car!</h1>
-            <form class="" action="car.php">
-                <div class="form-group">
-                    <label for="price">Enter Maximum Price:</label>
-                    <input type="number" name="price" value="price">
-                </div>
-                <div class="form-group">
-                    <label for="mileage">Enter Maximum Mileage:</label>
-                    <input type="number" name="mileage" value="mileage">
-                </div>
-                <button type="submit" class="btn-success">Submit</button>
-            </form>
+            {{greeting}}
+            <h1>Here are the cars for you!</h1>
+            <ul>
+                {% for car in cars %}
+                    <li>{{ car.getMake_Model }}</li>
+                    <li>{{ car.getPrice }}</li>
+                    <li>{{ car.getMiles }}</li>
+                    <li><img style='width:200px;' src="{{ car.getImage }}"></li>
+                {% endfor %}
+            </ul>
 
         </div>
     </body>
 </html>
 
 
-<?php
+<!-- <?php
     if(empty($cars_matching_search)) {
         echo "<h2> Sorry, no cars matched your search. </h2>";
     } else {
@@ -41,4 +39,4 @@
             echo "</ul>";
         }
     }
-?>
+?> -->
